@@ -7,6 +7,10 @@
  */
 int main(void)
 {
+<<<<<<< HEAD
 	printf("%s\n", __FILE__);
+=======
+	printf("%s\n", _FILE_);
+>>>>>>> 8a1eac70a28def1fbe5b9ab8f59582b933b6a81c
 	return (0);
 }
