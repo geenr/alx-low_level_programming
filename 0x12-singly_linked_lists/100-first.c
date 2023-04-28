@@ -1,11 +1,11 @@
 #include <stdio.h>
+void my_first(void) __attribute__ ((constructor));
 
-void Firstsentences(void)_attribute_((constructor));
 /**
- * First - prints sentences before main
- * Function is executed
+ * my_first - prints a sentence before the main
+ * function is executed
  */
-void Firstsentences(void)
+void my_first(void)
 {
 	printf("You're beat! and yet, you must allow,\n");
 	printf("I bore my house upon my back!\n");
