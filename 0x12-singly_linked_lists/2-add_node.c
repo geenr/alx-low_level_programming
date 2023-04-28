@@ -3,8 +3,9 @@
 #include <stdio.h>
 #include "lists.h"
 /**
- * _strlen - function that return the length of string
+ * _strlen - function that returns the length of string
  * @q : q is a character
+ *
  * Return: value is b
  */
 int _strlen(const char *q)
@@ -34,6 +35,6 @@ list_t *add_node(list_t **head, const char *str)
 	newnode->str = strdup(str);
 	newnode->len = _strlen;
 	newnode->next = *head;
-	*head = newnode;
+	*head = new_node;
 	return (*newnode);
 }
