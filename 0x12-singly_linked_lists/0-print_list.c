@@ -13,9 +13,9 @@ size_t print_list(const list_t *K)
 {
 	size_t z = 0;
 
-	while (K != NULL)
+	while (K)
 	{
-		if (K->str != NULL)
+		if (!K->str)
 		{
 			printf("[0] (nil)\n");
 		}
@@ -23,8 +23,8 @@ size_t print_list(const list_t *K)
 		{
 			printf("[%d] %s\n", K->len, K->str);
 		}
-		z++;
 		K = K->next;
+		z++;
 	}
 	return (z);
 }
