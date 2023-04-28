@@ -11,48 +11,48 @@
 */
 unsigned int _strlen(char *str)
 {
-	unsigned int i;
+	unsigned int b;
 
 	for
-		(i = 0;
-		 str[i];
-		 i++);
-	return (i);
+		(b = 0;
+		 str[b];
+		 b++);
+	return (b);
 }
 
 
 /**
 * add_node_end - adds a new node to the end of linked list
-* @head: double pointer to a linked list
+* @head: double pointer to a linked list_t list
 * @str: string to add to the new node
 *
-* Return: pointer to the new node
+* Return: pointer to the new node address of the new element
 */
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new, *tmp;
+	list_t *newnode, *tmp;
 
 	if (str == NULL)
 		return (NULL);
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
+	newnode = malloc(sizeof(list_t));
+	if (newnode == NULL)
 		return (NULL);
-	new->str = strdup(str);
-	if (new->str == NULL)
+	newnode->str = strdup(str);
+	if (newnode->str == NULL)
 	{
-		free(new);
+		free(newnode);
 		return (NULL);
 	}
-	new->len = _strlen(new->str);
-	new->next = NULL;
+	newnode->len = _strlen(newnode->str);
+	newnode->next = NULL;
 	if (*head == NULL)
 	{
-		*head = new;
-		return (new);
+		*head = newnode;
+		return (newnode);
 	}
 	tmp = *head;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = new;
-	return (new);
+	tmp->next = newnode;
+	return (newnode);
 }
