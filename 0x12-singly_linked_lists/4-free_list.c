@@ -3,17 +3,17 @@
 
 /**
  * free_list - free a linked list
- * @head: list_t list be freed
+ * @hed: list_t list be free
  */
-void free_list(list_t *head)
+void free_list(list_t *hed)
 {
 	list_t *temp;
 
-	while (head)
+	while (hed)
 	{
-		temp = head->next;
-		free(head->str);
-		free(head);
-		head = temp;
+		temp = hed->next;
+		free(hed->str);
+		free(hed);
+		hed = temp;
 	}
 }
