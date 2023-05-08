@@ -6,10 +6,10 @@ char *create_buffer(char *file);
 void close_file(int fd);
 
 /**
- * create_buffer - allocate 1024 Bytes for Buffer.
- * @file: The Name of the File Buffer is storing chars for.
+ * create_buffer - allocate 1024 Bytes for Buffers.
+ * @file: The Name of the File Buffers is storing chars for.
  *
- * Return: A Pointer to the Newly-allocated Buffer.
+ * Return: A Pointer to the Newly-allocated Buffers.
  */
 char *create_buffer(char *file)
 {
@@ -20,11 +20,11 @@ char *create_buffer(char *file)
 	if (Buffers == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"Error: Can't write to %s\n", file);
+			"Error: Can't write towards %s\n", file);
 		exit(99);
 	}
 
-	return (buffers);
+	return (Buffers);
 }
 
 /**
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
 
 	Buffers = create_buffer(argv[2]);
 	From = open(argv[1], O_RDONLY);
-	reader = read(from, buffer, 1024);
+	reader = read(From, Buffers, 1024);
 	towards = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 
-		winner = write(towards, Buffers, r);
+		winner = write(towards, Buffers, reader);
 		if (towards == -1 || winner == -1)
 		{
 			dprintf(STDERR_FILENO,
