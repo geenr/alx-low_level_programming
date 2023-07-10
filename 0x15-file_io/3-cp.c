@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	buffy = create_buffer(argv[2]);
+	buffy = buff_creator(argv[2]);
 	From = open(argv[1], O_RDONLY);
 	rder = read(From, buffy, 1024);
 	towards = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
@@ -55,20 +55,20 @@ int main(int argc, char *argv[])
 	} while (rder > 0);
 
 	free(buffy);
-	close_file(From);
-	close_file(towards);
+	file_closer(From);
+	file_closer(towards);
 
 	return (0);
 }
 
 /**
- * create_buffer - allocate 1024 Bytes for Buffers.
+ * buff_creator - allocate 1024 Bytes for Buffers.
  * @file: The Name of the File Buffers is storing chars for.
  *
  * Return: A Pointer to the Newly-allocated Buffers.
  */
 
-char *create_buffer(char *file)
+char *buff_creator(char *file)
 {
 	char *buffy;
 
@@ -84,10 +84,10 @@ char *create_buffer(char *file)
 }
 
 /**
- * close_file - closes file Descriptors.
+ * file_closer - closes file Descriptors.
  * @fd: The File Descriptor to be closed.
  */
-void close_file(int fd)
+void file_closer(int fd)
 {
 	int clozed;
 
