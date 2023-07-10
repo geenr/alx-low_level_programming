@@ -19,7 +19,7 @@ char *create_buffer(char *file)
 
 	if (buffy == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write towards %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
 		exit(99);
 	}
 
@@ -30,15 +30,15 @@ char *create_buffer(char *file)
  * close_file - closes file Descriptors.
  * @filed: The File Descriptor to be closed.
  */
-void close_file(int filed)
+void close_file(int fd)
 {
 	int clozed;
 
-	clozed = close(filed);
+	clozed = close(fd);
 
 	if (clozed == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close filed %d\n", filed);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
