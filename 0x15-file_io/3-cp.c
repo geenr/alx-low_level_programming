@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *create_buffer(char *file);
-void close_file(int fd);
+char *buff_creator(char *file);
+void file_closer(int fd);
 
 /**
  * main - copy the contents of a File to another File.
