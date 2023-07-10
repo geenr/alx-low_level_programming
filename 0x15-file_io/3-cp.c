@@ -13,17 +13,17 @@ void close_file(int fd);
  */
 char *create_buffer(char *file)
 {
-	char *Buffers;
+	char *buffy;
 
-	Buffers = malloc(sizeof(char) * 1024);
+	buffy = malloc(sizeof(char) * 1024);
 
-	if (Buffers == NULL)
+	if (buffy == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write towards %s\n", file);
 		exit(99);
 	}
 
-	return (Buffers);
+	return (buffy);
 }
 
 /**
@@ -57,8 +57,8 @@ void close_file(int filed)
  */
 int main(int argc, char *argv[])
 {
-	int From, towards, reader, winner;
-	char *Buffers;
+	int From, towards, rder, wter;
+	char *buffy;
 
 	if (argc != 3)
 	{
@@ -66,33 +66,33 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	Buffers = create_buffer(argv[2]);
+	buffy = create_buffer(argv[2]);
 	From = open(argv[1], O_RDONLY);
-	reader = read(From, Buffers, 1024);
+	rder = read(From, buffy, 1024);
 	towards = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
-		if (From == -1 || reader == -1)
+		if (From == -1 || rder == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			free(Buffers);
+			free(buffy);
 			exit(98);
 		}
 
-		winner = write(towards, Buffers, reader);
-		if (towards == -1 || winner == -1)
+		wter = write(towards, buffy, rder);
+		if (towards == -1 || wter == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			free(Buffers);
+			free(buffy);
 			exit(99);
 		}
 
-		reader = read(From, Buffers, 1024);
+		rder = read(From, buffy, 1024);
 		towards = open(argv[2], O_WRONLY | O_APPEND);
 
-	} while (reader > 0);
+	} while (rder > 0);
 
-	free(Buffers);
+	free(buffy);
 	close_file(From);
 	close_file(towards);
 
