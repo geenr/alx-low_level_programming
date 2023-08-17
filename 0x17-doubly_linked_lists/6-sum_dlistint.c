@@ -10,14 +10,15 @@
 
 int sum_dlistint(dlistint_t *head)
 {
-	int addata = 0;
+	int addata;
 	dlistint_t *pointers = head;
-	
+
+	addata = 0;
+
 	while (pointers != NULL)
 	{
 		addata += pointers->n;
 		pointers = pointers->next;
 	}
-	
-	return addata;
+	return (addata);
 }
