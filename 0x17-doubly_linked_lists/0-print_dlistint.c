@@ -22,4 +22,5 @@ size_t print_dlistint(const dlistint_t *h)
 		el_numb++;
 		h = h->next;
 	}
+	return (el_numb);
 }
