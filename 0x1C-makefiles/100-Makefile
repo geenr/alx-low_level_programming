@@ -5,8 +5,6 @@ OBJ = $(SRC:.c=.o)
 RM = rm -f
 NAME = school
 
-#the CFLAGS is an inbuilt so there is no need to write it
-
 .PHONY: all clean oclean fclean re
 
 all: $(OBJ) m.h
